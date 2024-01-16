@@ -1,4 +1,3 @@
-const bodyParser = require('body-parser');
 const express = require('express'), //framework setup provides features
   fs = require('fs'), //creates node_modules
   morgan = require('morgan'); //log request
