@@ -15,58 +15,74 @@
   <body>
     <h1>MyFlix API</h1>
     <p>
-The MyFlix API is designed following the principles of REST structure. It features URLs, provides responses in JSON format, and adheres to standard HTTP response codes.<br /><br />
+      The MyFlix API allows users to discover information on movies, directors, and genres. Users can sign up, update personal details, and build a list of their favorite movies. It is designed following the principles of REST structure. It features URLs, provides responses in JSON format, and adheres to standard HTTP response codes. <br /><br />
     </p>
     <br />
-    <h2>Supported Requests</h2>
     <table class="table table-striped">
       <thead>
         <tr>
           <th scope="col">Request</th>
           <th scope="col">URL</th>
           <th scope="col">HTTP Method</th>
-          <th scope="col">Request body data format</th>
-          <th scope="col">Response body data format</th>
+          <th scope="col">Request Body Data Format</th>
+          <th scope="col">Response Body Data Format</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Get list of movies</td>
+          <td>Return list of movies</td>
           <td>/movies</td>
           <td>GET</td>
-          <td>None</td>
+          <td>N/A</td>
           <td>
-            An array of JSON objects holding data about all the movies in the
-            database
+            An array of JSON objects containing information about every movie
           </td>
         </tr>
         <tr>
-          <td>Get list of movies by director</td>
-          <td>/movies/directors/[director name]</td>
+          <td>Return list of movies by director</td>
+          <td>/movies/directors/:directorName</td>
           <td>GET</td>
-          <td>None</td>
+          <td>N/A</td>
           <td>
-            An array of JSON objects holding data about all the movies by
-            requested director
+            An array of JSON objects containing information about every movie
+            requested by the director
           </td>
         </tr>
         <tr>
-          <td>Get list of movies by genre</td>
-          <td>/movies/genres/[genre]</td>
+          <td>Return list of movies by genre</td>
+          <td>/movies/genres/:genreName</td>
           <td>GET</td>
-          <td>None</td>
+          <td>N/A</td>
           <td>
-            An array of JSON objects holding data about all the movies by
-            requested genre
+            An array of JSON objects containing information about every movie
+            requested by the genre
           </td>
         </tr>
         <tr>
-          <td>Get data about a single movie by title</td>
-          <td>/movies/[title]</td>
+          <td>Return a movies by title</td>
+          <td>/movies/:title</td>
           <td>GET</td>
-          <td>None</td>
+          <td>N/A</td>
           <td>
-            A JSON object holding data about the requested movie<br />
+            An array of JSON objects containing information about the movie<br />
+          </td>
+        </tr>
+        <tr>
+          <td>Return list of users</td>
+          <td>/users</td>
+          <td>GET</td>
+          <td>N/A</td>
+          <td>
+            A JSON object containing information about all users, including an assigned ID
+          </td>
+        </tr>
+        <tr>
+          <td>Return a user by username</td>
+          <td>/users/:Username</td>
+          <td>GET</td>
+          <td>N/A</td>
+          <td>
+            A JSON object containing information about a specific user, including an assigned ID
           </td>
         </tr>
         <tr>
@@ -74,30 +90,68 @@ The MyFlix API is designed following the principles of REST structure. It featur
           <td>/users</td>
           <td>POST</td>
           <td>
-            A JSON object holding data about the user to add
+            Enter a JSON object of a new user
+            <br>
+            example:
+            <br>
+            "Username": "bobdylan"
+            <br>
+            "Password": "tangledupinblue"
+            <br>
+            "Email": "bobdylan@gmail.com"
+            <br>
+            "Birthday": "1999-08-12"
           </td>
           <td>
-            A JSON object holding data about the user that was added, including their assigned id
+            A JSON object containing information about an added user, including an assigned ID
           </td>
         </tr>
         <tr>
-          <td>Add a movie to a user's favorites list by Title</td>
-          <td>/users/[name]/movies/[movieID]</td>
+          <td>Update a user</td>
+          <td>/users/:Username</td>
           <td>PUT</td>
-          <td>None</td>
+          <td>Update a JSON object of a current user
+            <br>
+            example:
+            <br>
+            "Username": "newusername"
+            <br>
+            "Password": "newpassword"
+            <br>
+            "Email": "newemail@gmail.com"
+            <br>
+            "Birthday": "new birthday"</td>
           <td>
-            A text message indicating whether the movie was successfully added
-            from the user's favorited movies
+            A JSON object containing updated information about an updated user
           </td>
         </tr>
         <tr>
-          <td>Remove a movie from a user's favorites list</td>
-          <td>/users/[name]/movies/[movieID]</td>
+          <td>Delete a user</td>
+          <td>/users/:Username</td>
           <td>DELETE</td>
-          <td>None</td>
+          <td>N/A</td>
           <td>
-            A text message indicating whether the movie was successfully removed
-            from the user's favorited movies
+            Response text saying "This user has been deleted"
+          </td>
+        </tr>
+        <tr>
+          <td>Add a movie to a user's favorites</td>
+          <td>/users/:Username/movies/:MovieID</td>
+          <td>PUT</td>
+          <td>Select a movie to add to favorites</td>
+          <td>
+            Response indicating whether the movie was successfully added
+            to the user's favorites
+          </td>
+        </tr>
+        <tr>
+          <td>Remove a movie from a user's favorites</td>
+          <td>/users/:Username/movies/:MovieID</td>
+          <td>DELETE</td>
+          <td>Unselect movie from favorites</td>
+          <td>
+            Response indicating whether the movie was successfully removed
+            from the user's favorites
           </td>
         </tr>
       </tbody>
