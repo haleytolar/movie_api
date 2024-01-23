@@ -15,7 +15,11 @@
   <body>
     <h1>MyFlix API</h1>
     <p>
-      The MyFlix API allows users to discover information on movies, directors, and genres. Users can sign up, update personal details, and build a list of their favorite movies. It is designed following the principles of REST structure. It features URLs, provides responses in JSON format, and adheres to standard HTTP response codes. <br /><br />
+      The MyFlix API allows users to discover information on movies, directors,
+      and genres. Users can sign up, update personal details, and build a list
+      of their favorite movies. It is designed following the principles of REST
+      structure. It features URLs, provides responses in JSON format, and
+      adheres to standard HTTP response codes. <br /><br />
     </p>
     <br />
     <table class="table table-striped">
@@ -35,7 +39,101 @@
           <td>GET</td>
           <td>N/A</td>
           <td>
-            An array of JSON objects containing information about every movie
+            [{"_id":"65a843f2266d86b605bea400",
+            <br />
+            "Title":"The Godfather",
+            <br />
+            "Description":"Don Vito Corleone, the head of a mafia family,
+            decides to pass on his empire to his youngest son, Michael. However,
+            this decision unintentionally endangers the lives of his loved
+            ones.",
+            <br />
+            "Genre":
+            <br />
+            {“
+            <br />
+            Name":"Gangster",
+            <br />
+            "Description":
+            <br />
+            "A gangster film or gangster movie is a film belonging to a genre
+            that focuses on gangs and organized crime. It is a subgenre of crime
+            film that may involve large criminal organizations or small gangs
+            formed to perform a certain illegal act."
+            <br />
+            },
+            <br />
+            "Director":
+            <br />
+            {
+            <br />
+            "Name":"Francis Ford Coppola",
+            <br />
+            "Bio":"Francis Ford Coppola is an American film director, producer,
+            and screenwriter. He is considered one of the leading figures of the
+            New Hollywood film movement of the 1960s and 1970s and is widely
+            considered one of the greatest directors of all time.",
+            <br />
+            "Birth":"1939"
+            <br />
+            },
+            <br />
+            "Actors":[],
+            <br />
+            "ImagePath":"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ6EAZYpFPv-j-msWE7uFUueby2qiH_lz67ryBOJ41kg4nKHJ6y",
+            <br />
+            "Featured":true},
+            <br />
+            { "_id":"65a8457b266d86b605bea401",
+            <br />
+            "Title":"A Space Odyssey",
+            <br />
+            "Description":"An imposing black structure provides a connection
+            between the past and the future in this enigmatic adaptation of a
+            short story by revered sci-fi author Arthur C. Clarke. When Dr. Dave
+            Bowman (Keir Dullea) and other astronauts are sent on a mysterious
+            mission, their computer system, HAL, begins to display increasingly
+            strange behavior, leading up to a tense showdown between man and
+            machine that results in a mind-bending trek through space and
+            time.",
+            <br />
+            "Genre":
+            <br />
+            {
+            <br />
+            "Name": "Science fiction",
+            <br />
+            "Description": "Science fiction is a genre of speculative fiction,
+            which typically deals with imaginative and futuristic concepts such
+            as advanced science and technology, space exploration, time travel,
+            parallel universes, and extraterrestrial life."
+            <br />
+            },
+            <br />
+            "Director":
+            <br />
+            {
+            <br />
+            "Name" : "Stanley Kubrick”,
+            <br />
+            "Bio": "Stanley Kubrick was an American filmmaker and photographer.
+            Widely considered one of the greatest filmmakers of all time, his
+            films were nearly all adaptations of novels or short stories,
+            spanning a number of genres and gaining recognition for their
+            intense attention to detail, innovative cinematography, extensive
+            set design, and dark humor.",
+            <br />
+            "Birth": "1928",
+            <br />
+            "Death": "1999"
+            <br />
+            },
+            <br />
+            "Actors":[],
+            <br />
+            "ImagePath":"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSvfAM066WHsduq5axPuWmdhXKYEEMjtSV8s14kAEQtXTufoQMo",
+            <br />
+            "Featured":true}, … (rest of movie list)
           </td>
         </tr>
         <tr>
@@ -44,8 +142,108 @@
           <td>GET</td>
           <td>N/A</td>
           <td>
-            An array of JSON objects containing information about every movie
-            requested by the director
+            [{ "_id": "65a84d89266d86b605bea405",
+            <br />
+            "Title": "Psycho",
+            <br />
+            "Description": "Phoenix secretary Marion Crane, on the lam after
+            stealing $40,000 from her employer in order to run away with her
+            boyfriend, Sam Loomis, is overcome by exhaustion during a heavy
+            rainstorm. Traveling on the back roads to avoid the police, she
+            stops for the night at the ramshackle Bates Motel and meets the
+            polite but highly-strung proprietor Norman Bates, a young man with
+            an interest in taxidermy and a difficult relationship with his
+            mother.
+            <br />
+            "Genre":
+            <br />
+            {
+            <br />
+            "Name": "Horror",
+            <br />
+            "Description": "Horror is a film genre that seeks to elicit fear or
+            disgust in its audience for entertainment purposes. Horror films
+            often explore dark subject matter and may deal with transgressive
+            topics or themes. Broad elements include monsters, apocalyptic
+            events, and religious or folk beliefs."
+            <br />
+            },
+            <br />
+            "Director":
+            <br />
+            {
+            <br />
+            "Name": "Alfred Hitchcock",
+            <br />
+            "Bio": "Sir Alfred Joseph Hitchcock KBE was a prominent British film
+            director, screenwriter, producer, and editor. He is considered to be
+            one of the most influential figures in the history of cinema. Over
+            the course of his six-decade-long career, he directed more than 50
+            feature films, many of which are still highly regarded and studied
+            today.",
+            <br />
+            "Birth": "1899",
+            <br />
+            "Death": "1980"
+            <br />
+            },
+            <br />
+            "Actors": [],
+            <br />
+            "ImagePath":
+            "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRiohn42YYfOYwmfZKweQdl74FXLr1BjVYo60kxyxoP0dFaMN3w",
+            <br />
+            "Featured": true
+            <br />
+            },
+            <br />
+            { "_id": "65a84e72266d86b605bea406",
+            <br />
+            "Title": "Vertigo",
+            <br />
+            "Description": "An ex-police officer who suffers from an intense
+            fear of heights is hired to prevent an old friend's wife from
+            committing suicide, but all is not as it seems.",
+            <br />
+            "Genre":
+            <br />
+            {
+            <br />
+            "Name": "Horror",
+            <br />
+            "Description": "Horror is a film genre that seeks to elicit fear or
+            disgust in its audience for entertainment purposes. Horror films
+            often explore dark subject matter and may deal with transgressive
+            topics or themes. Broad elements include monsters, apocalyptic
+            events, and religious or folk beliefs."
+            <br />
+            },
+            <br />
+            "Director":
+            <br />
+            {
+            <br />
+            "Name": "Alfred Hitchcock",
+            <br />
+            "Bio": "Sir Alfred Joseph Hitchcock KBE was a prominent British film
+            director, screenwriter, producer, and editor. He is considered to be
+            one of the most influential figures in the history of cinema. Over
+            the course of his six-decade-long career, he directed more than 50
+            feature films, many of which are still highly regarded and studied
+            today.",
+            <br />
+            "Birth": "1899",
+            <br />
+            "Death": "1980"
+            <br />
+            },
+            <br />
+            "Actors": [],
+            <br />
+            "ImagePath":
+            "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSJ3qjdT8opidKEygP82UrMtqufZeHrh2oikzuY_YVlMdARR4yG",
+            <br />
+            "Featured": true }]
           </td>
         </tr>
         <tr>
@@ -54,8 +252,100 @@
           <td>GET</td>
           <td>N/A</td>
           <td>
-            An array of JSON objects containing information about every movie
-            requested by the genre
+            [{ "_id": "65a843f2266d86b605bea400",
+            <br />
+            "Title": "The Godfather",
+            <br />
+            "Description": "Don Vito Corleone, the head of a mafia family,
+            decides to pass on his empire to his youngest son, Michael. However,
+            this decision unintentionally endangers the lives of his loved
+            ones.",
+            <br />
+            "Genre":
+            <br />
+            {
+            <br />
+            "Name": "Gangster",
+            <br />
+            "Description": "A gangster film or gangster movie is a film
+            belonging to a genre that focuses on gangs and organized crime. It
+            is a subgenre of crime film that may involve large criminal
+            organizations or small gangs formed to perform a certain illegal
+            act."
+            <br />
+            },
+            <br />
+            "Director":
+            <br />
+            {
+            <br />
+            "Name": "Francis Ford Coppola",
+            <br />
+            "Bio": "Francis Ford Coppola is an American film director, producer,
+            and screenwriter. He is considered one of the leading figures of the
+            New Hollywood film movement of the 1960s and 1970s and is widely
+            considered one of the greatest directors of all time.",
+            <br />
+            "Birth": "1939"
+            <br />
+            },
+            <br />
+            "Actors": [],
+            <br />
+
+            "ImagePath":
+            "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ6EAZYpFPv-j-msWE7uFUueby2qiH_lz67ryBOJ41kg4nKHJ6y",
+            <br />
+            "Featured": true
+            <br />
+            },
+            <br />
+            { "_id": "65a84c3e266d86b605bea404",
+            <br />
+            "Title": "Pulp Fiction",
+            <br />
+            "Description": "Vincent Vega and Jules Winnfield are hitmen with a
+            penchant for philosophical discussions. In this ultra-hip,
+            multi-strand crime movie, their storyline is interwoven with those
+            of their boss, gangster Marsellus Wallace; his actress wife, Mia;
+            struggling boxer Butch Coolidge; master fixer Winston Wolfe and a
+            nervous pair of armed robbers, 'Pumpkin' and 'Honey Bunny'.",
+            <br />
+            "Genre":
+            <br />
+            {
+            <br />
+            "Name": "Gangster",
+            <br />
+            "Description": "A gangster film or gangster movie is a film
+            belonging to a genre that focuses on gangs and organized crime. It
+            is a subgenre of crime film, that may involve large criminal
+            organizations, or small gangs formed to perform a certain illegal
+            act."
+            <br />
+            },
+            <br />
+            "Director":
+            <br />
+            {
+            <br />
+            "Name": "Quentin Tarantino",
+            <br />
+            "Bio": "Quentin Jerome Tarantino is an American film director,
+            screenwriter, and actor. His films are characterized by stylized
+            violence, extended dialogue including a pervasive use of profanity,
+            and references to popular culture.",
+            <br />
+            "Birth": "1963"
+            <br />
+            },
+            <br />
+            "Actors": [],
+            <br />
+            "ImagePath":
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlNRzwKlBbE6QGNyvO0rGoruofKdYgGK9MeozNwRdWmnDMf8xI",
+            <br />
+            "Featured": true }]
           </td>
         </tr>
         <tr>
@@ -64,7 +354,52 @@
           <td>GET</td>
           <td>N/A</td>
           <td>
-            An array of JSON objects containing information about the movie<br />
+            [{"_id": "65a84691266d86b605bea402",
+            <br />
+            "Title": "Casablanca",
+            <br />
+            "Description": "Rick Blaine, who owns a nightclub in Casablanca,
+            discovers his old flame Ilsa is in town with her husband, Victor
+            Laszlo. Laszlo is a famed rebel, and with Germans on his tail, Ilsa
+            knows Rick can help them get out of the country.",
+            <br />
+            "Genre":
+            <br />
+            {
+            <br />
+            "Name": "Romance",
+            <br />
+            "Description": "A romance genre refers to a type of genre that
+            places its primary focus on the relationship and romantic love
+            between two people and usually has an emotionally satisfying and
+            optimistic ending."
+            <br />
+            },
+            <br />
+            "Director":
+            <br />
+            {
+            <br />
+            "Name": "Michael Curtiz",
+            <br />
+            "Bio": "Michael Curtiz was a Hungarian-American film director,
+            recognized as one of the most prolific directors in history. He
+            directed classic films from the silent era and numerous others
+            during Hollywood's Golden Age, when the studio system was
+            prevalent.",
+            <br />
+            "Birth": "1886",
+            <br />
+            "Death": "1962"
+            <br />
+            },
+            <br />
+            "Actors": [],
+            <br />
+            "ImagePath":
+            "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSxe_DEQcsxBKAzVSrss9lhl9ZW7QZ8MFDstcm5HZDrwBLBjR4t",
+            <br />
+            "Featured": true }]
           </td>
         </tr>
         <tr>
@@ -73,7 +408,96 @@
           <td>GET</td>
           <td>N/A</td>
           <td>
-            A JSON object containing information about all users, including an assigned ID
+            [{"_id": "65a857ee266d86b605bea40b",
+            <br />
+            "Username": "janisjoplin",
+            <br />
+            "Password": "crybaby",
+            <br />
+            "Email": "janisjoplin@gmail.com",
+            <br />
+            "Birthday": "1999-08-03T00:00:00.000Z",
+            <br />
+            "FavoriteMovies":
+            <br />
+            ["65a84691266d86b605bea402"]
+            <br />
+            },
+            <br />
+            { "_id": "65a858bc266d86b605bea40c",
+            <br />
+            "Username": "johnnycash",
+            <br />
+            "Password": "folsomprisonblues",
+            <br />
+            "Email": "johnnycash@gmail.com",
+            <br />
+            "Birthday": "2001-10-12T00:00:00.000Z",
+            <br />
+            "FavoriteMovies":
+            <br />
+            [ "65a8516e266d86b605bea408"]
+            <br />
+            },
+            <br />
+            {"_id": "65a8596a266d86b605bea40d",
+            <br />
+            "Username": "Iggypop",
+            <br />
+            "Password": "thepassenger",
+            <br />
+            "Email": "iggypop@gmail.com",
+            <br />
+            "Birthday": "2002-09-15T00:00:00.000Z",
+            <br />
+            "FavoriteMovies":
+            <br />["65a852b7266d86b605bea409"] },
+            <br />
+            {"_id": "65a85a3f266d86b605bea40e",
+            <br />
+            "Username": "joanjett",
+            <br />
+            "Password": "badreputation",
+            <br />
+            "Email": "joanjett@gmail.com",
+            <br />
+            "Birthday": "1997-05-24T00:00:00.000Z",
+            <br />
+            "FavoriteMovies":
+            <br />
+            ["65a84ab9266d86b605bea403"]
+            <br />
+            },
+            <br />
+            {"_id": "65aad2263102f84ec50ae4a0",
+            <br />
+            "Username": "johnlennon",
+            <br />
+            "Password": "imagine",
+            <br />
+            "Email": "johnlennon@gmail.com",
+            <br />
+            "Birthday": "1987-09-12T00:00:00.000Z",
+            <br />
+            "FavoriteMovies": [],
+            <br />
+            "__v": 0
+            <br />
+            },
+            <br />
+            {"_id": "65aad935a278f45e6359c6e4",
+            <br />
+            "Username": "bobdylan",
+            <br />
+            "Password": "tangledupinblue",
+            <br />
+            "Email": "bobdylan@gmail.com",
+            <br />
+            "Birthday": "1987-09-28T00:00:00.000Z",
+            <br />
+            "FavoriteMovies": [],
+            <br />
+            "__v": 0}]
           </td>
         </tr>
         <tr>
@@ -82,7 +506,19 @@
           <td>GET</td>
           <td>N/A</td>
           <td>
-            A JSON object containing information about a specific user, including an assigned ID
+            {"_id": "65aad2263102f84ec50ae4a0",
+            <br />
+            "Username": "johnlennon",
+            <br />
+            "Password": "imagine",
+            <br />
+            "Email": "johnlennon@gmail.com",
+            <br />
+            "Birthday": "1987-09-12T00:00:00.000Z",
+            <br />
+            "FavoriteMovies": [],
+            <br />
+            "__v": 0 },
           </td>
         </tr>
         <tr>
@@ -91,38 +527,64 @@
           <td>POST</td>
           <td>
             Enter a JSON object of a new user
-            <br>
+            <br />
             example:
-            <br>
-            "Username": "bobdylan"
-            <br>
-            "Password": "tangledupinblue"
-            <br>
-            "Email": "bobdylan@gmail.com"
-            <br>
-            "Birthday": "1999-08-12"
+            <br />
+            Username: "bobdylan"
+            <br />
+            Password: "tangledupinblue"
+            <br />
+            Email: "bobdylan@gmail.com"
+            <br />
+            Birthday: "1999-08-12"
           </td>
           <td>
-            A JSON object containing information about an added user, including an assigned ID
+            { "_id": "65aad935a278f45e6359c6e4",
+            <br />
+            "Username": "bobdylan",
+            <br />
+            "Password": "tangledupinblue",
+            <br />
+            "Email": "bobdylan@gmail.com",
+            <br />
+            "Birthday": "1987-09-28T00:00:00.000Z",
+            <br />
+            "FavoriteMovies": [], }
           </td>
         </tr>
         <tr>
           <td>Update a user</td>
           <td>/users/:Username</td>
           <td>PUT</td>
-          <td>Update a JSON object of a current user
-            <br>
-            example:
-            <br>
-            "Username": "newusername"
-            <br>
-            "Password": "newpassword"
-            <br>
-            "Email": "newemail@gmail.com"
-            <br>
-            "Birthday": "new birthday"</td>
           <td>
-            A JSON object containing updated information about an updated user
+            Update a JSON object of a current user
+            <br />
+            example:
+            <br />
+            Username: "janisjoplin"
+            <br />
+            Password: "crybaby"
+            <br />
+            Email: "janisjoplin@gmail.com"
+            <br />
+            Birthday: "1999-08-03"
+          </td>
+          <td>
+            { "_id": "65a857ee266d86b605bea40b",
+            <br />
+            "Username": "janisjoplin",
+            <br />
+            "Password": "crybaby",
+            <br />
+            "Email": "janisjoplin@gmail.com",
+            <br />
+            "Birthday": "1999-08-03T00:00:00.000Z",
+            <br />
+            "FavoriteMovies":
+            <br />
+            [ "65a84691266d86b605bea402",
+            <br />
+            "65a84d89266d86b605bea405" ]}
           </td>
         </tr>
         <tr>
@@ -130,9 +592,7 @@
           <td>/users/:Username</td>
           <td>DELETE</td>
           <td>N/A</td>
-          <td>
-            Response text saying "This user has been deleted"
-          </td>
+          <td>Response text saying "Bobdylan was deleted"</td>
         </tr>
         <tr>
           <td>Add a movie to a user's favorites</td>
@@ -140,8 +600,21 @@
           <td>PUT</td>
           <td>Select a movie to add to favorites</td>
           <td>
-            Response indicating whether the movie was successfully added
-            to the user's favorites
+            { "_id": "65a857ee266d86b605bea40b",
+            <br />
+            "Username": "janisjoplin",
+            <br />
+            "Password": "crybaby",
+            <br />
+            "Email": "janisjoplin@gmail.com",
+            <br />
+            "Birthday": "1999-08-03T00:00:00.000Z",
+            <br />
+            "FavoriteMovies":
+            <br />
+            [ "65a84691266d86b605bea402",
+            <br />
+            "65a84d89266d86b605bea405" ]}
           </td>
         </tr>
         <tr>
@@ -150,8 +623,19 @@
           <td>DELETE</td>
           <td>Unselect movie from favorites</td>
           <td>
-            Response indicating whether the movie was successfully removed
-            from the user's favorites
+            { "_id": "65a857ee266d86b605bea40b",
+            <br />
+            "Username": "janisjoplin",
+            <br />
+            "Password": "crybaby",
+            <br />
+            "Email": "janisjoplin@gmail.com",
+            <br />
+            "Birthday": "1999-08-03T00:00:00.000Z",
+            <br />
+            "FavoriteMovies":
+            <br />
+            "65a84691266d86b605bea402"}
           </td>
         </tr>
       </tbody>

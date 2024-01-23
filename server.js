@@ -186,14 +186,18 @@ app.get('/movies/:title', (req, res) => {
 
 // search by genre
 app.get('/movies/genres/:genreName', (req, res) => {
+  // Using Mongoose to find movies with the specified genre
   Movies.find({ 'Genre.Name': req.params.genreName })
       .then((movies) => {
+          // Respond with a JSON array of movies
           res.status(200).json(movies);
       })
       .catch((err) => {
+          // Handle any errors and send a 500 status with an error message
           res.status(500).send('Error: ' + err);
       });
 });
+
 
 // search by director
 app.get('/movies/directors/:directorName', (req, res) => {
