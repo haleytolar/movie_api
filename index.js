@@ -52,33 +52,35 @@ app.get('/', (req, res) => {
     res.send('Welcome movie enthusiasts!')
 });
 
+const { check: validateCheck, validationResult: validateResult } = require('express-validator');
 
-//create new user
+// ... Your existing code ...
+
+// create new user
 app.post('/users',
   // Validation logic here for request
-  //you can either use a chain of methods like .not().isEmpty()
-  //which means "opposite of isEmpty" in plain english "is not empty"
-  //or use .isLength({min: 5}) which means
-  //minimum value of 5 characters are only allowed
+  // you can either use a chain of methods like .not().isEmpty()
+  // which means "opposite of isEmpty" in plain English "is not empty"
+  // or use .isLength({min: 5}) which means
+  // minimum value of 5 characters are only allowed
   [
-    check('Username', 'Username is required').isLength({min: 5}),
-    check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
-    check('Password', 'Password is required').not().isEmpty(),
-    check('Email', 'Email does not appear to be valid').isEmail()
+    validateCheck('Username', 'Username is required').isLength({ min: 5 }),
+    validateCheck('Username', 'Username contains non-alphanumeric characters - not allowed.').isAlphanumeric(),
+    validateCheck('Password', 'Password is required').not().isEmpty(),
+    validateCheck('Email', 'Email does not appear to be valid').isEmail()
   ], async (req, res) => {
 
-  // check the validation object for errors
-    let errors = validationResult(req);
+    // check the validation object for errors
+    const errors = validateResult(req);
 
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
     }
 
-    let hashedPassword = Users.hashPassword(req.body.Password);
     await Users.findOne({ Username: req.body.Username }) // Search to see if a user with the requested username already exists
       .then((user) => {
         if (user) {
-          //If the user is found, send a response that it already exists
+          // If the user is found, send a response that it already exists
           return res.status(400).send(req.body.Username + ' already exists');
         } else {
           Users
@@ -99,7 +101,10 @@ app.post('/users',
         console.error(error);
         res.status(500).send('Error: ' + error);
       });
-  });
+  })
+
+
+
 
 // Get all users
 app.get('/users', passport.authenticate('jwt', { session: false }), async (req, res) => {
@@ -279,7 +284,7 @@ app.use((err, req, res, next) => {
     res.status(500).send('Something broke!');
   });
 
-  const port = process.env.PORT || 8080;
-  app.listen(port, '0.0.0.0',() => {
-   console.log('Listening on Port ' + port);
-  });
+ // listen for requests
+app.listen(8080, () => {
+  console.log('Your app is listening on port 8080.');
+});
