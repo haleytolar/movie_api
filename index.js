@@ -16,7 +16,7 @@ const bcrypt = require('bcrypt');
 
 
 //connect to db
-mongoose.connect('mongodb://localhost:27017/test');
+mongoose.connect('mongodb://127.0.0.1/test');
 
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
@@ -27,23 +27,23 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const cors = require('cors');
 app.use(cors());
 
-//let allowedOrigins = ['http://localhost:8080', 'http://testsite.com'];
+let allowedOrigins = ['http://localhost:8080', 'http://testsite.com'];
 
-//app.use(cors({
-  //origin: (origin, callback) => {
-    //if(!origin) return callback(null, true);
-   // if(allowedOrigins.indexOf(origin) === -1){ // If a specific origin isn’t found on the list of allowed origins
-     // let message = 'The CORS policy for this application doesn’t allow access from origin ' + origin;
-     // return callback(new Error(message ), false);
-   // }
-   // return callback(null, true);
- // }
-//}));
+app.use(cors({
+  origin: (origin, callback) => {
+    if(!origin) return callback(null, true);
+    if(allowedOrigins.indexOf(origin) === -1){ // if a specific origin isn’t found on the list of allowed origins
+      let message = 'The CORS policy for this application doesn’t allow access from origin ' + origin;
+      return callback(new Error(message ), false);
+    }
+    return callback(null, true);
+  }
+}));
 
-// Import auth.js
+// import auth.js
 let auth = require('./auth.js')(app);
 
-// Import passport and passport.js 
+// import passport and passport.js 
 const passport = require('passport');
 require('./passport.js');
 
@@ -56,16 +56,9 @@ app.get('/', (req, res) => {
 
 const { check: validateCheck, validationResult: validateResult } = require('express-validator');
 
-// ... Your existing code ...
-
 // create new user
 app.post(
   "/users",
-  // Validation logic here for request
-  //you can either use a chain of methods like .not().isEmpty()
-  //which means "opposite of isEmpty" in plain english "is not empty"
-  //or use .isLength({min: 5}) which means
-  //minimum value of 5 characters are only allowed
   [
     check("Username", "Username is required").isLength({ min: 5 }),
     check(
@@ -84,10 +77,10 @@ app.post(
     }
     let hashedPassword = Users.hashPassword(req.body.Password);
 await Users.findOne({ Username: req.body.Username })
-//Search to see if a user with the requested username already exists
+// search to see if a user with the requested username already exists
 .then((user) => {
   if (user) {
-    //If the user is found, send a response that it already exists
+    // if the user is found, send a response indicating it exists
     return res.status(400).send(req.body.Username + "already exists");
   } else {
     Users.create({
@@ -112,9 +105,7 @@ await Users.findOne({ Username: req.body.Username })
 }
 );
 
-
-
-// READ user list
+// read user list
 app.get("/users", async (req, res) => {
   await Users.find()
     .then((users) => {
@@ -126,7 +117,7 @@ app.get("/users", async (req, res) => {
     });
 });
 
-// READ user by username
+// read user by username
 app.get(
   "/users/:Username",
   passport.authenticate("jwt", { session: false }),
@@ -147,11 +138,11 @@ app.put(
   "/users/:Username",
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
-    // CONDITION TO CHECK ADDED HERE
+    // condition to check added here
     if (req.user.Username !== req.params.Username) {
       return res.status(400).send("Permission denied");
     }
-    // CONDITION ENDS
+    // condition ends
     await Users.findOneAndUpdate(
       { Username: req.params.Username },
       {
@@ -163,7 +154,7 @@ app.put(
         },
       },
       { new: true }
-    ) // This line makes sure that the updated document is returned
+    ) // makes sure that the updated document is returned
       .then((updatedUser) => {
         res.json(updatedUser);
       })
@@ -175,13 +166,13 @@ app.put(
 );
 
 
-// Delete a user by username
+// delete a user by username
 app.delete('/users/:Username', passport.authenticate('jwt', { session: false }), async (req, res) => {
-  // Condition to check user authorization
+  // condition to check user authorization
   if(req.user.Username !== req.params.Username){
       return res.status(400).send('Permission denied');
   }
-  // Condition ends here
+  // condition ends here
   await Users.findOneAndDelete({ Username: req.params.Username })
       .then((user) => {
           if (!user) {
@@ -198,22 +189,22 @@ app.delete('/users/:Username', passport.authenticate('jwt', { session: false }),
 
 
 
-// Add a movie to a user's list of favorites
+// add a movie to a user's list of favorites
 app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { session: false }), async (req, res) => {
   try {
-      // Condition to check user authorization
+      // condition to check user authorization
       if (req.user.Username !== req.params.Username) {
           return res.status(400).send('Permission denied');
       }
 
-      // Update the user's favorite movies
+      // update the user's favorite movies
       const updatedUser = await Users.findOneAndUpdate(
           { Username: req.params.Username },
           { $push: { FavoriteMovies: req.params.MovieID } },
-          { new: true } // This line makes sure that the updated document is returned
+          { new: true } // makes sure that the updated document is returned
       );
 
-      // Respond with the updated user
+      // respond with the updated user
       res.json(updatedUser);
   } catch (err) {
       console.error(err);
@@ -226,19 +217,19 @@ app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { sess
 //lets user delete movie from favorite
 app.delete('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { session: false }), async (req, res) => {
   try {
-      // Condition to check user authorization
+      // condition to check user authorization
       if (req.user.Username !== req.params.Username) {
           return res.status(400).send('Permission denied');
       }
 
-      // Update the user's favorite movies by pulling the specified MovieID
+      // update the user's favorite movies by MovieID
       const updatedUser = await Users.findOneAndUpdate(
           { Username: req.params.Username },
           { $pull: { FavoriteMovies: req.params.MovieID } },
-          { new: true } // This line makes sure that the updated document is returned
+          { new: true } // makes sure that the updated document is returned
       );
 
-      // Respond with the updated user
+      // respond with the updated user
       res.json(updatedUser);
   } catch (err) {
       console.error(err);
@@ -275,14 +266,14 @@ app.get('/movies/:title', passport.authenticate('jwt', { session: false }), asyn
 
 // search by genre
 app.get('/movies/genres/:genreName', passport.authenticate('jwt', { session: false }), async (req, res) => {
-  // Using Mongoose to find movies with the specified genre
+  // using Mongoose to find movies with the specific genre
   await Movies.find({ 'Genre.Name': req.params.genreName })
       .then((movies) => {
-          // Respond with a JSON array of movies
+          // respond with a JSON array of movies
           res.status(200).json(movies);
       })
       .catch((err) => {
-          // Handle any errors and send a 500 status with an error message
+          // handle any errors and send a 500 status with an error message
           res.status(500).send('Error: ' + err);
       });
 });
@@ -305,7 +296,7 @@ app.use((err, req, res, next) => {
     res.status(500).send('Something broke!');
   });
 
- // listen for requests
-app.listen(8080, () => {
-  console.log('Your app is listening on port 8080.');
-});
+  const port = process.env.PORT || 8080;
+  app.listen(port, '0.0.0.0',() => {
+   console.log('Listening on Port ' + port);
+  });
