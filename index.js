@@ -10,13 +10,14 @@ const Models = require("./models.js");
 const Movies = Models.Movie;
 const Users = Models.User;
 
+
 //add validater 
 const { check, validationResult } = require("express-validator");
 const bcrypt = require('bcrypt');
 
 
 //connect to db
-mongoose.connect('mongodb://127.0.0.1/test');
+mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
