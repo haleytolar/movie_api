@@ -254,7 +254,7 @@ app.get('/movies', async (req, res) => {
 });
 
 // search by title
-app.get('/movies/:title', passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.get('/movies/:title', async (req, res) => {
   await Movies.findOne({ Title: req.params.title })
       .then((movie) => {
           res.json(movie);
@@ -266,7 +266,7 @@ app.get('/movies/:title', passport.authenticate('jwt', { session: false }), asyn
 });
 
 // search by genre
-app.get('/movies/genres/:genreName', passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.get('/movies/genres/:genreName', async (req, res) => {
   // using Mongoose to find movies with the specific genre
   await Movies.find({ 'Genre.Name': req.params.genreName })
       .then((movies) => {
@@ -281,7 +281,7 @@ app.get('/movies/genres/:genreName', passport.authenticate('jwt', { session: fal
 
 
 // search by director
-app.get('/movies/directors/:directorName', passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.get('/movies/directors/:directorName', async (req, res) => {
   await Movies.findOne({ 'Director.Name': req.params.directorName })
       .then((movie) => {
           res.json(movie.Director);
