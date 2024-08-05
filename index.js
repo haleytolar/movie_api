@@ -41,12 +41,13 @@ app.use(cors({
   }
 }));
 
-// import auth.js
-let auth = require('./auth.js')(app);
+const auth = require('./auth.js');
+auth(app); // Call the function to set up the routes
 
-// import passport and passport.js 
+
 const passport = require('passport');
-require('./passport.js');
+app.use(passport.initialize());
+
 
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), {flags: 'a'}) //enable logging requests
 app.use(morgan('combined', {stream: accessLogStream}));  // enable morgan logging to 'log.txt'
