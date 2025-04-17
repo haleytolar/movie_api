@@ -24,12 +24,16 @@ const Models = require("./models.js");
 const Movies = Models.Movie;
 const Users = Models.User;
 
+require('dotenv').config();
+
+
 // Add validator 
 const { check, validationResult } = require("express-validator");
 const bcrypt = require('bcrypt');
 
 // Connect to database
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+
 
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
